@@ -1,20 +1,24 @@
-<script>
+<script lang="ts">
+	let loginData = {
+		email: '',
+		password: ''
+	};
+
+	async function handleLogin(e: any) {
+		e.preventDefault();
+	}
 </script>
 
-<div class="wrapper">
-	<h1>Welcome to SvelteKit</h1>
-	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="flex min-h-screen flex-col items-center justify-center text-center">
+	<div>
+		<h1>Welcome to SvelteKit</h1>
 
-	<button>Let's goooo!</button>
+		<form on:submit={handleLogin} class="card card-body" style="max-width: 400px">
+			<button type="submit" class="btn btn-primary">Log In</button>
+		</form>
+		<button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">...</button>
+	</div>
 </div>
 
 <style>
-	.wrapper {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		min-height: 90vh;
-		text-align: center;
-	}
 </style>
