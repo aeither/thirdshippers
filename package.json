@@ -37,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltestack/svelte-query": "^1.6.0",
 		"@thirdweb-dev/sdk": "^3.0.1",
 		"d3": "^7.6.1",
 		"daisyui": "^2.27.0"

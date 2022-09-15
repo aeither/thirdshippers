@@ -10,19 +10,19 @@ export function GET({ url }: { url: URL }) {
 	// const ABI_JSON = readFileSync('src/data/deployerAbi.json', 'utf-8');
 
 	// USDC
-	const CHAIN_ID = 'polygon';
-	const DEPLOYER_ADDRESS = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174';
-	const ABI_JSON = readFileSync('src/data/USDC.json', 'utf-8');
+	// const CHAIN_ID = 'polygon';
+	// const DEPLOYER_ADDRESS = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174';
+	// const ABI_JSON = readFileSync('src/data/USDC.json', 'utf-8');
 
-	const sdk = new ThirdwebSDK(CHAIN_ID);
-	const contract = sdk.getContractFromAbi(DEPLOYER_ADDRESS, JSON.parse(ABI_JSON));
+	// const sdk = new ThirdwebSDK(CHAIN_ID);
+	// const contract = sdk.getContractFromAbi(DEPLOYER_ADDRESS, JSON.parse(ABI_JSON));
 
-	contract.events.listenToAllEvents((event) => {
-		if (event.eventName === 'Approval') {
-			console.log(event);
-			return new Response(event.transaction.transactionHash);
-		}
-	});
+	// contract.events.listenToAllEvents((event) => {
+	// 	if (event.eventName === 'Approval') {
+	// 		console.log(event);
+	// 		return new Response(event.transaction.transactionHash);
+	// 	}
+	// });
 
 	const min = Number(url.searchParams.get('min') ?? '0');
 	const max = Number(url.searchParams.get('max') ?? '1');

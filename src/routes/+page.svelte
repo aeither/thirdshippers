@@ -1,16 +1,21 @@
 <script lang="ts">
-	import InputSlider from 'src/components/_ui/InputSlider.svelte';
-	import Input from '$lib/Input.svelte';
+	import { useQuery } from '@sveltestack/svelte-query';
+
 	import { onMount } from 'svelte';
 
 	let txs = '';
+	// onMount(async () => {
+	// 	const res = await fetch('/api/random-number?min=20&max=100');
+	// 	const data = await res.json();
+	// 	txs = data;
+	// 	console.log('🚀 ~ file: +page.svelte ~ line 12 ~ onMount ~ data', data);
+	// });
 
-	onMount(async () => {
-		const res = await fetch('/api/random-number?min=20&max=100');
-		const data = await res.json();
-		txs = data;
-		console.log('🚀 ~ file: +page.svelte ~ line 12 ~ onMount ~ data', data);
-	});
+	const queryResult = useQuery(
+		'repoData',
+		() => fetch('/api/random-number?min=20&max=100').then((res) => res.json()),
+		{ refetchInterval: 3000 }
+	);
 
 	async function handleLogin(e: any) {
 		e.preventDefault();
@@ -23,13 +28,15 @@
 		<div>
 			<span>Hash: {txs}</span>
 		</div>
-		<Input />
-		<InputSlider value="slider" />
-		<form on:submit={handleLogin} class="card card-body" style="max-width: 400px">
-			<button type="submit" class="btn btn-primary">Log In</button>
-		</form>
-
-		<button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">...</button>
+		{#if $queryResult.isLoading}
+			<span>Loading...</span>
+		{:else if $queryResult.error}
+			<span>An error has occurred</span>
+		{:else}
+			<div>
+				<p>{$queryResult.data}</p>
+			</div>
+		{/if}
 	</div>
 </div>
 

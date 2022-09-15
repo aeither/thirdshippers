@@ -4,6 +4,7 @@ specifiers:
   '@rollup/plugin-dsv': ^2.0.3
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
+  '@sveltestack/svelte-query': ^1.6.0
   '@tailwindcss/typography': ^0.5.7
   '@thirdweb-dev/sdk': ^3.0.1
   '@typescript-eslint/eslint-plugin': ^5.37.0
@@ -28,6 +29,7 @@ specifiers:
   vite: ^3.1.0
 
 dependencies:
+  '@sveltestack/svelte-query': 1.6.0
   '@thirdweb-dev/sdk': 3.0.1_ethers@5.7.1
   d3: 7.6.1
   daisyui: 2.27.0_wh6birz6bzek2zjlzgyc32cby4
@@ -609,6 +611,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@sveltestack/svelte-query/1.6.0:
+    resolution: {integrity: sha512-C0wWuh6av1zu3Pzwrg6EQmX3BhDZQ4gMAdYu6Tfv4bjbEZTB00uEDz52z92IZdONh+iUKuyo0xRZ2e16k2Xifg==}
+    peerDependencies:
+      broadcast-channel: ^4.5.0
+    peerDependenciesMeta:
+      broadcast-channel:
+        optional: true
+    dev: false
 
   /@tailwindcss/typography/0.5.7_tailwindcss@3.1.8:
     resolution: {integrity: sha512-JTTSTrgZfp6Ki4svhPA4mkd9nmQ/j9EfE7SbHJ1cLtthKkpW2OxsFXzSmxbhYbEkfNIyAyhle5p4SYyKRbz/jg==}
