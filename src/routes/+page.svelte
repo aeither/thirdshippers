@@ -1,4 +1,11 @@
 <script>
+	import { onMount } from 'svelte';
+
+	onMount(async () => {
+		const res = await fetch('/api/random-number?min=20&max=100');
+		const data = await res.json();
+		console.log('🚀 ~ file: +page.svelte ~ line 7 ~ onMount ~ data', data);
+	});
 </script>
 
 <div class="wrapper">
