@@ -2,22 +2,27 @@
 	import InputSlider from 'src/components/_ui/InputSlider.svelte';
 	import Input from '$lib/Input.svelte';
 	import { onMount } from 'svelte';
-	
-		onMount(async () => {
-			const res = await fetch('/api/random-number?min=20&max=100');
-			const data = await res.json();
-			console.log('🚀 ~ file: +page.svelte ~ line 7 ~ onMount ~ data', data);
-		});
+
+	let txs = '';
+
+	onMount(async () => {
+		const res = await fetch('/api/random-number?min=20&max=100');
+		const data = await res.json();
+		txs = data;
+		console.log('🚀 ~ file: +page.svelte ~ line 12 ~ onMount ~ data', data);
+	});
 
 	async function handleLogin(e: any) {
 		e.preventDefault();
 	}
 </script>
 
-
 <div class="flex min-h-screen flex-col items-center justify-center text-center">
 	<div>
 		<h1>Welcome to SvelteKit</h1>
+		<div>
+			<span>Hash: {txs}</span>
+		</div>
 		<Input />
 		<InputSlider value="slider" />
 		<form on:submit={handleLogin} class="card card-body" style="max-width: 400px">
