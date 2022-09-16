@@ -1,17 +1,34 @@
 <script lang="ts">
-	import InputSlider from 'src/components/_ui/InputSlider.svelte';
-	import Input from '$lib/Input.svelte';
+	import TableHeader from '$lib/TableHeader.svelte';
+	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let txs = {
-		values: ['']
+	type ResData = {
+		id: string;
+		creator: string; // deployer
+		newContract: string; // proxy
+		contractModel: string; // implementation
+		factory: string;
 	};
+
+	let eventData: {
+		data: ResData[];
+	};
+	// $: txs = {
+	// 	values: [
+	// 		'Hash: 0x72fea5a535cc7b9d6de8f4ce15bdba88a14bfcecdf1f2a4889b5bdca2c66ce0b 2',
+	// 		'Hash: 0x455c52f528c082f4a2be5f71d6a8938394f8708bdcdd9ed01f43621d4e696a6a 3',
+	// 		'Hash: 0x455c52f528c082f4a2be5f71d6a8938394f8708bdcdd9ed01f43621d4e696a6a 4',
+	// 		'Hash: 0x455c52f528c082f4a2be5f71d6a8938394f8708bdcdd9ed01f43621d4e696a6a 5',
+	// 		'Hash: 0xcf66aa7637863f28d1c4be1d45879c1926e848f968bf7689dfe0c493d8f64747 6',
+	// 		'Hash: 0xb9f22f5f2df67d8ac0f602b0e75a84c19c00d8801eb857199104df7f8217598b 7'
+	// 	]
+	// };
 
 	onMount(() => {
 		async function fetchData() {
 			const res = await fetch('/api/random-number?min=20&max=100');
-			const data = await res.json();
-			txs = data;
+			eventData = await res.json();
 		}
 
 		const interval = setInterval(fetchData, 3000);
@@ -21,16 +38,28 @@
 	});
 </script>
 
-<div class="flex min-h-screen flex-col items-center justify-center text-center">
-	<div>
-		<h1>Welcome to SvelteKit</h1>
-		{#each txs.values as value}
-			<div>
-				<span>Hash: {value}</span>
-			</div>
-		{/each}
-		<Input />
-		<InputSlider value="slider" />
+<div class="container mx-auto px-4">
+	<div class="flex min-h-screen flex-col items-center justify-center gap-3 text-center">
+		<h1>Real Time Deploys</h1>
+
+		<TableHeader />
+
+		{#if eventData && eventData.data}
+			{#each eventData.data as data (data.id)}
+				<div class="w-full" transition:slide|local>
+					<div class="card w-full bg-neutral text-neutral-content">
+						<div class="card-body flex flex-row items-center justify-between text-start">
+							<p>{data.newContract.slice(0, 20)}...</p>
+							<p>{data.creator.slice(0, 20)}...</p>
+							<p>{data.contractModel.slice(0, 20)}...</p>
+							<div class="card-actions justify-end">
+								<button class="btn btn-primary">Open</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			{/each}
+		{/if}
 
 		<button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">Say Hi!</button
 		>
