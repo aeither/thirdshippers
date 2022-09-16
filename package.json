@@ -39,6 +39,7 @@
 	"dependencies": {
 		"@thirdweb-dev/sdk": "^3.0.1",
 		"d3": "^7.6.1",
-		"daisyui": "^2.27.0"
+		"daisyui": "^2.27.0",
+		"ethers": "^5.7.1"
 	}
 }
