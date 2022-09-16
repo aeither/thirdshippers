@@ -26,27 +26,22 @@ type ResData = {
 	newContract: string; // proxy
 	contractModel: string; // implementation
 	factory: string;
+	transactionHash: string;
 };
 // poll
 // let resData: ResData[] = [];
 let resData: ResData[] = [
 	{
-		id: '0x689948D2E223215921efBA79e5d9594c36caa000',
+		id: 'DEMO',
 		creator: '0x689948D2E223215921efBA79e5d9594c36caa000', // deployer
-		newContract: '0x689948D2E223215921efBA79e5d9594c36caa000', // proxy
-		contractModel: '0x689948D2E223215921efBA79e5d9594c36caa000', // implementation
-		factory: '0x689948D2E223215921efBA79e5d9594c36caa000'
-	},
-	{
-		id: '0x689948D2E223215921efBA79e5d9594c36caa0020',
-		creator: '0x689948D2E223215921efBA79e5d9594c36caa000', // deployer
-		newContract: '0x689948D2E223215921efBA79e5d9594c36caa000', // proxy
-		contractModel: '0x689948D2E223215921efBA79e5d9594c36caa000', // implementation
-		factory: '0x689948D2E223215921efBA79e5d9594c36caa000'
+		newContract: '0x8Bdfc7fdB1253dE408A902A4A638437fEFd44D22', // proxy
+		contractModel: '0x0bBA31EAf82C649C0B9579F5F44374C74F4605Ea', // implementation
+		factory: '0x5DBC7B840baa9daBcBe9D2492E45D7244B54A2A0',
+		transactionHash: '0xfedd33eadf1647ae5c00b9e479561979476869be1f43bccb2b92502413e72709'
 	}
 ];
 
-// contract.events.
+// const events = await contract.events.getEvents('ProxyDeployed');
 
 contract.events.listenToAllEvents((event) => {
 	console.log(event);
@@ -59,7 +54,8 @@ contract.events.listenToAllEvents((event) => {
 					creator: event.data.deployer as string,
 					newContract: event.data.proxy as string,
 					contractModel: event.data.implementation as string,
-					factory: event.transaction.address
+					factory: event.transaction.address,
+					transactionHash: event.transaction.transactionHash
 				},
 				...resData
 			];
@@ -70,7 +66,8 @@ contract.events.listenToAllEvents((event) => {
 					creator: event.data.deployer as string,
 					newContract: event.data.proxy as string,
 					contractModel: event.data.implementation as string,
-					factory: event.transaction.address
+					factory: event.transaction.address,
+					transactionHash: event.transaction.transactionHash
 				},
 				...resData
 			];

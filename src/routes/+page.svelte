@@ -9,6 +9,7 @@
 		newContract: string; // proxy
 		contractModel: string; // implementation
 		factory: string;
+		transactionHash: string;
 	};
 
 	let eventData: {
@@ -42,18 +43,35 @@
 	<div class="flex min-h-screen flex-col items-center justify-center gap-3 text-center">
 		<h1>Real Time Deploys</h1>
 
-		<TableHeader />
-
 		{#if eventData && eventData.data}
+			<TableHeader factory={eventData.data[0].factory} />
+
 			{#each eventData.data as data (data.id)}
 				<div class="w-full" transition:slide|local>
 					<div class="card w-full bg-neutral text-neutral-content">
 						<div class="card-body flex flex-row items-center justify-between text-start">
-							<p>{data.newContract.slice(0, 20)}...</p>
-							<p>{data.creator.slice(0, 20)}...</p>
-							<p>{data.contractModel.slice(0, 20)}...</p>
+							<p>
+								<a href={'https://mumbai.polygonscan.com/address/' + data.newContract}
+									>{data.newContract.slice(0, 20)}...</a
+								>
+							</p>
+							<p>
+								<a href={'https://mumbai.polygonscan.com/address/' + data.creator}
+									>{data.creator.slice(0, 20)}...</a
+								>
+							</p>
+							<p>
+								<a href={'https://mumbai.polygonscan.com/address/' + data.contractModel}
+									>{data.contractModel.slice(0, 20)}...</a
+								>
+							</p>
 							<div class="card-actions justify-end">
-								<button class="btn btn-primary">Open</button>
+								<button
+									class="btn btn-primary"
+									on:click={() =>
+										window.open('https://mumbai.polygonscan.com/tx/' + data.transactionHash)}
+									>Open</button
+								>
 							</div>
 						</div>
 					</div>
