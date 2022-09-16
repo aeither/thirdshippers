@@ -1,5 +1,4 @@
 import { ThirdwebSDK } from '@thirdweb-dev/sdk';
-import { error } from '@sveltejs/kit';
 import { readFileSync } from 'fs';
 
 // Registry

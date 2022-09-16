@@ -15,20 +15,10 @@
 	let eventData: {
 		data: ResData[];
 	};
-	// $: txs = {
-	// 	values: [
-	// 		'Hash: 0x72fea5a535cc7b9d6de8f4ce15bdba88a14bfcecdf1f2a4889b5bdca2c66ce0b 2',
-	// 		'Hash: 0x455c52f528c082f4a2be5f71d6a8938394f8708bdcdd9ed01f43621d4e696a6a 3',
-	// 		'Hash: 0x455c52f528c082f4a2be5f71d6a8938394f8708bdcdd9ed01f43621d4e696a6a 4',
-	// 		'Hash: 0x455c52f528c082f4a2be5f71d6a8938394f8708bdcdd9ed01f43621d4e696a6a 5',
-	// 		'Hash: 0xcf66aa7637863f28d1c4be1d45879c1926e848f968bf7689dfe0c493d8f64747 6',
-	// 		'Hash: 0xb9f22f5f2df67d8ac0f602b0e75a84c19c00d8801eb857199104df7f8217598b 7'
-	// 	]
-	// };
 
 	onMount(() => {
 		async function fetchData() {
-			const res = await fetch('/api/factory-mumbai?min=20&max=100');
+			const res = await fetch('/api/factory-polygon');
 			eventData = await res.json();
 		}
 
