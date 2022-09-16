@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-netlify';
 import preprocess from 'svelte-preprocess';
 import path from 'path';
 
@@ -13,7 +13,10 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			edge: false,
+			split: false
+		}),
 		alias: {
 			src: path.resolve('./src')
 		}
