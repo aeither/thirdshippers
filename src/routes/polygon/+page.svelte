@@ -18,7 +18,7 @@
 
 	onMount(() => {
 		async function fetchData() {
-			const res = await fetch('/api/factory-polygon');
+			const res = await fetch('https://shippers-api.lin3.xyz/factory-polygon/apple');
 			eventData = await res.json();
 		}
 

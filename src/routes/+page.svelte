@@ -28,7 +28,7 @@
 
 	onMount(() => {
 		async function fetchData() {
-			const res = await fetch('/api/factory-mumbai?min=20&max=100');
+			const res = await fetch('https://shippers-api.lin3.xyz/factory-mumbai/apple');
 			eventData = await res.json();
 		}
 
@@ -84,7 +84,7 @@
 			class="btn btn-primary"
 			on:click={() =>
 				window.open(
-					'https://twitter.com/intent/tweet?text=I%20recently%20learned%20about%20ThirdShippers%2C%20a%20service%20that%20allows%20you%20to%20check%20who%20is%20shipping%20Thirdweb%20contracts%20in%20real%20time.%20%40giovannifulin%20created%20it.%0A%0AVisit%20thirdshippers.vercel.app%20to%20learn%20more.'
+					'https://twitter.com/intent/tweet?text=I%20recently%20learned%20about%20ThirdShippers%2C%20a%20service%20that%20allows%20you%20to%20check%20who%20is%20shipping%20Thirdweb%20contracts%20in%20real%20time.%20%40giovannifulin%20created%20it.%0A%0AVisit%20shippers.lin3.xyz%20to%20learn%20more.'
 				)}>Share the excitement!</button
 		>
 	</div>
