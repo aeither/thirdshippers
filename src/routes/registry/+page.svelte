@@ -1,13 +1,13 @@
 <script lang="ts">
-	import TableHeader from '$lib/TableHeader.svelte';
+	import TableHeader from 'src/lib/FactoryTableHeader.svelte';
 	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import MarketingButton from 'src/lib/MarketingButton.svelte';
-	import type { ResData } from 'src/types/basic';
-	import TableRow from 'src/lib/TableRow.svelte';
+	import type { RegistryData } from 'src/types/basic';
+	import TableRow from 'src/lib/FactoryTableRow.svelte';
 
 	let eventData: {
-		data: ResData[];
+		data: RegistryData[];
 	};
 
 	onMount(() => {

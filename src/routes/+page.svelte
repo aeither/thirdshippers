@@ -2,12 +2,11 @@
 	import MarketingButton from 'src/lib/MarketingButton.svelte';
 	import FactoryTableHeader from 'src/lib/FactoryTableHeader.svelte';
 	import { onMount } from 'svelte';
-	import { slide } from 'svelte/transition';
-	import type { ResData } from 'src/types/basic';
+	import type { FactoryData } from 'src/types/basic';
 	import FactoryTableRow from 'src/lib/FactoryTableRow.svelte';
 
 	let eventData: {
-		data: ResData[];
+		data: FactoryData[];
 	};
 	// $: txs = {
 	// 	values: [

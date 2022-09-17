@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import type { ResData } from 'src/types/basic';
+	import type { FactoryData } from 'src/types/basic';
 
-	export let data: ResData;
+	export let data: FactoryData;
 	export let chain: 'polygon' | 'mumbai';
 
 	const explorerBaseUrl =
