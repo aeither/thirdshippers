@@ -1,17 +1,10 @@
 <script lang="ts">
-	import TableHeader from '$lib/TableHeader.svelte';
-	import { slide } from 'svelte/transition';
+	import MarketingButton from 'src/lib/MarketingButton.svelte';
+	import TableHeader from 'src/lib/TableHeader.svelte';
 	import { onMount } from 'svelte';
-
-	type ResData = {
-		id: string;
-		creator: string; // deployer
-		newContract: string; // proxy
-		contractModel: string; // implementation
-		factory: string;
-		transactionHash: string;
-	};
-
+	import { slide } from 'svelte/transition';
+	import type { ResData } from 'src/types/basic';
+	
 	let eventData: {
 		data: ResData[];
 	};
@@ -28,7 +21,7 @@
 
 	onMount(() => {
 		async function fetchData() {
-			const res = await fetch('https://shippers-api.lin3.xyz/factory-mumbai/apple');
+			const res = await fetch('https://shippers-api.lin3.xyz/factory-mumbai');
 			eventData = await res.json();
 		}
 
@@ -80,13 +73,7 @@
 			{/each}
 		{/if}
 
-		<button
-			class="btn btn-primary"
-			on:click={() =>
-				window.open(
-					'https://twitter.com/intent/tweet?text=I%20recently%20learned%20about%20ThirdShippers%2C%20a%20service%20that%20allows%20you%20to%20check%20who%20is%20shipping%20Thirdweb%20contracts%20in%20real%20time.%20%40giovannifulin%20created%20it.%0A%0AVisit%20shippers.lin3.xyz%20to%20learn%20more.'
-				)}>Share the excitement!</button
-		>
+		<MarketingButton />
 	</div>
 </div>
 
