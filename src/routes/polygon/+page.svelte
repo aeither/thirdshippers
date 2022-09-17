@@ -1,10 +1,10 @@
 <script lang="ts">
-	import TableHeader from '$lib/TableHeader.svelte';
+	import FactoryTableHeader from 'src/lib/FactoryTableHeader.svelte';
 	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import MarketingButton from 'src/lib/MarketingButton.svelte';
 	import type { ResData } from 'src/types/basic';
-	import TableRow from 'src/lib/TableRow.svelte';
+	import FactoryTableRow from 'src/lib/FactoryTableRow.svelte';
 
 	let eventData: {
 		data: ResData[];
@@ -29,10 +29,9 @@
 		<h2>Deployments in Real Time</h2>
 
 		{#if eventData && eventData.data}
-			<TableHeader factory={eventData.data[0].factory} />
-
+			<FactoryTableHeader factory={eventData.data[0].factory} chain="polygon" />
 			{#each eventData.data as data (data.id)}
-				<TableRow {data} />
+				<FactoryTableRow {data} chain="polygon" />
 			{/each}
 		{/if}
 
