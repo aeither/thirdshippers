@@ -4,6 +4,7 @@
 	import MarketingButton from 'src/lib/MarketingButton.svelte';
 	import type { RegistryData } from 'src/types/basic';
 	import RegistryTableRow from 'src/lib/RegistryTableRow.svelte';
+	import FrontTitle from 'src/lib/FrontTitle.svelte';
 
 	let eventData: {
 		data: RegistryData[];
@@ -17,7 +18,6 @@
 			const res = await fetch(fetchUrl);
 			eventData = await res.json();
 		}
-
 		const interval = setInterval(fetchData, 3000);
 		fetchData();
 
@@ -27,17 +27,13 @@
 
 <div class="container mx-auto px-4">
 	<div class="flex min-h-screen flex-col items-center justify-center gap-3 text-center">
-		<h1>ThirdShippers</h1>
-		<h2>Deployments in Real Time</h2>
-
+		<FrontTitle />
 		{#if eventData && eventData.data}
 			<RegistryTableHeader registry={eventData.data[0].registry} chain="polygon" />
-
 			{#each eventData.data as data (data.id)}
 				<RegistryTableRow {data} chain="polygon" />
 			{/each}
 		{/if}
-
 		<MarketingButton />
 	</div>
 </div>

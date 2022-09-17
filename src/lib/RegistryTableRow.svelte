@@ -19,7 +19,7 @@
 				<a href={explorerBaseUrl + 'address/' + data.creator}>{data.creator.slice(0, 20)}...</a>
 			</p>
 			<p>
-				<a href={explorerBaseUrl + 'address/' + data.transactionHash}
+				<a href={explorerBaseUrl + 'tx/' + data.transactionHash}
 					>{data.transactionHash.slice(0, 20)}...</a
 				>
 			</p>

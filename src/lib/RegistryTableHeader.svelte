@@ -14,7 +14,7 @@
 		<h2 class="card-title">Creator</h2>
 		<h2 class="card-title">Transaction Hash</h2>
 		<!-- svelte-ignore a11y-missing-content -->
-		<h2 class="card-title text-primary">
+		<h2 class="card-title text-primary-content underline">
 			<a href={explorerBaseUrl + registry}>Registry</a>
 		</h2>
 	</div>

@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import type { FactoryData } from 'src/types/basic';
 	import FactoryTableRow from 'src/lib/FactoryTableRow.svelte';
+	import FrontTitle from 'src/lib/FrontTitle.svelte';
 
 	let eventData: {
 		data: FactoryData[];
@@ -34,9 +35,7 @@
 
 <div class="container mx-auto px-4">
 	<div class="flex min-h-screen flex-col items-center justify-center gap-3 text-center">
-		<h1>ThirdShippers</h1>
-		<h2>Deployments in Real Time</h2>
-
+		<FrontTitle />
 		{#if eventData && eventData.data}
 			<FactoryTableHeader factory={eventData.data[0].factory} chain="mumbai" />
 			{#each eventData.data as data (data.id)}
