@@ -2,7 +2,9 @@ export type FactoryData = {
 	id: string;
 	creator: string; // deployer
 	newContract: string; // proxy
+	newContractName: string;
 	contractModel: string; // implementation
+	contractModelName: string;
 	factory: string;
 	transactionHash: string;
 };
